@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cityzenmag_unite_valeur,cityzenmag.unite_valeur,model_cityzenmag_unite_valeur,base.group_user,1,1,1,1
+access_association,access_association,model_association,base.group_user,1,1,1,1
+access_membre,access_membre,model_membre,base.group_user,1,1,1,1
+access_bureau,access_bureau,model_bureau,base.group_user,1,1,1,1
+access_poste,access_poste,model_poste,base.group_user,1,1,1,1
+access_entreprise,access_entreprise,model_entreprise,base.group_user,1,1,1,1

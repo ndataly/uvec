@@ -1,0 +1,119 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="cityzenmag.list">
+      <field name="name">cityzenmag list</field>
+      <field name="model">cityzenmag.unite_valeur</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="unite_association" model="ir.actions.act_window">
+      <field name="name">Associations liées</field>
+      <field name="res_model">association</field>
+    </record>
+
+    <record id="unite_valeur_view_form" model="ir.ui.view">
+      <field name="name">unite_valeur.view.form</field>
+      <field name="model">cityzenmag.unite_valeur</field>
+      <field name="arch" type="xml">
+        <form string="Unité de valeur">
+          <sheet>
+            <header>
+              <button name="%(unite_association)d" type="action" class="oe_stat_button" icon="fa-list">
+                <field name="association_count" string="Associations liées" widget="statinfo"/>
+              </button>
+            </header>
+
+            <group>
+              <field name="name" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <record id="association_view_form" model="ir.ui.view">
+      <field name="name">association.view.form</field>
+      <field name="model">association</field>
+      <field name="arch" type="xml">
+        <form string="Association">
+          <sheet>
+            <group>
+              <field name="name" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="association_view_tree" model="ir.ui.view">
+      <field name="name">association.view.tree</field>
+      <field name="model">association</field>
+      <field name="arch" type="xml">
+        <tree string="Associations">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="cityzenmag.action_window">
+      <field name="name">Unité de valeur</field>
+      <field name="res_model">cityzenmag.unite_valeur</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record id="association_action" model="ir.actions.act_window">
+      <field name="name">Associations</field>
+      <field name="res_model">association</field>
+      <field name="view_mode">tree,form</field>
+
+    </record>
+
+    <!-- server action to the one above -->
+
+    <record model="ir.actions.server" id="cityzenmag.action_server">
+      <field name="name">cityzenmag server</field>
+      <field name="model_id" ref="model_cityzenmag_unite_valeur"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="cityzenmag" id="cityzenmag.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu 1" id="cityzenmag.menu_1" parent="cityzenmag.menu_root"/>
+    <menuitem name="Menu 2" id="cityzenmag.menu_2" parent="cityzenmag.menu_root"/>
+    <menuitem id="association_menu_root" name="Associations" parent="cityzenmag.menu_root" sequence="10"/>
+
+
+    <!-- actions -->
+
+    <menuitem id="association_menu" name="Associations" action="association_action" parent="association_menu_root" sequence="10"/>
+
+
+    <menuitem name="List" id="cityzenmag.menu_1_list" parent="cityzenmag.menu_1" action="cityzenmag.action_window"/>
+    <menuitem name="Server to list" id="cityzenmag" parent="cityzenmag.menu_2" action="cityzenmag.action_server"/>
+
+  </data>
+</odoo>

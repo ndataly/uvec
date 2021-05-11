@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="poste_view_form" model="ir.ui.view">
+            <field name="name">poste_form_view</field>
+            <field name="model">poste</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="occupant" />
+                            </group>
+                            <group>
+                                <field name="nom_poste" />
+                                <field name="position" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="poste_view_tree" model="ir.ui.view">
+            <field name="name">poste.view.tree</field>
+            <field name="model">poste</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="occupant" />
+                    <field name="nom_poste" />
+                    <field name="position" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="poste_action" model="ir.actions.act_window">
+            <field name="name">Poste</field>
+            <field name="res_model">poste</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="poste_menu" name="Poste" action="poste_action" parent="association_menu_root" sequence="10"/>
+
+    </data>
+
+
+</odoo>

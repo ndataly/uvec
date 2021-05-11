@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="membre_view_form" model="ir.ui.view">
+            <field name="name">membre.view.form</field>
+            <field name="model">membre</field>
+            <field name="arch" type="xml">
+                <form string="Membres">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="sexe" />
+                                <field name="propriete" />
+                            </group>
+                            <group>
+                                <field name="telephone" />
+                                <field name="adresse" />
+                            </group>
+                        </group>
+                        <group>
+                            <field name="biens" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="membre_view_tree" model="ir.ui.view">
+            <field name="name">membre.view.tree</field>
+            <field name="model">membre</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="name" />
+                    <field name="sexe" />
+                    <field name="telephone" />
+                    <field name="adresse" />
+                    <field name="propriete" />
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="membre_action" model="ir.actions.act_window">
+            <field name="name">Membres</field>
+            <field name="res_model">membre</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="membre_menu_root" name="Membres" parent="cityzenmag.menu_root" sequence="10"/>
+        <menuitem id="membre_menu" name="Membre" action="membre_action" parent="membre_menu_root" sequence="10"/>
+
+    </data>
+
+
+</odoo>

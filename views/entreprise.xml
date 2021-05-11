@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>        
+        <record id="entreprise_view_form" model="ir.ui.view">
+            <field name="name">entreprise_form_view</field>
+            <field name="model">entreprise</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="adresse" />
+                                
+                            </group>
+                            <group>
+                                <field name="email" />
+                            </group>
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="entreprise_view_action" model="ir.actions.act_window">
+            <field name="name">Entreprise</field>
+            <field name="res_model">entreprise</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- <menuitem id="entreprise_menu" name="entreprise" action="entreprise_view_action" parent="membre_menu_root"/> -->
+
+    </data>
+    
+
+</odoo>
